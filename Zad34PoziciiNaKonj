@@ -1,0 +1,35 @@
+// PoziciinaKONJ34INKI809.cpp 
+/*
+Da se napravi programa vo koja za vneseni pozicii(koordinati) na konjot se ispisuvaat site polinja koi gi
+bie konjot. Multicontrol for.
+*/
+//Angela Kjosevska INKI809
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+    char bukva;
+    int x, y, broj; //deklaracija na koordinatite
+    int X[8] = { 2, 1, -1, -2, -2, -1, 1, 2 }; //nizi so moznite pozicii, kako soodvetno se zgolemuvaat koordinatite za sekoj mozen poteg 
+    int Y[8] = { 1, 2, 2, 1, -1, -2, -2, -1 }; 
+    cout<<"Vnesi ja pozicijata na konjot: "<<endl; //vnes na pocetna pozicija
+    cin>>bukva>>broj;
+    
+    while (bukva<'A'|| bukva>'H'|| broj<1|| broj>8) //proverka dali koordinatite se vo granicite na tablata
+    {
+        cout<<"Pogresen vnes!";
+        return main();//vrakja na pocetok da se vnesat koordinatite povtorno
+    }
+    
+    cout<<"Pozicii na koi shto konjot moze da se pomesti se: "<<endl; // ispisuvanje na moznite pozicii
+    for (int i = 0; i < 8; i++) 
+    {   
+        x = (int)bukva + X[i]; //sledni pozicii 
+        y = broj + Y[i]; 
+        if (x >= 'A' && y > 0 && x <= 'H' && y <= 8 ) //proverka posebno za sekoja koordinata dali e vo ramkite na tablata  
+        cout<<(char)x<<y<<" ";
+    }
+    return 0;
+}
